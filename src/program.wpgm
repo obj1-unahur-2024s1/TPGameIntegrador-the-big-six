@@ -1,0 +1,29 @@
+import wollok.game.*
+import characters.*
+import menu.*
+import timing.*
+
+
+program tetrisInverse {
+	game.width(10)
+	game.height(17)
+	game.cellSize(50)
+	game.title("Nachito.txt")
+	
+ 	// Iniciamos el menu
+	menu.inicio()
+		 
+	// Comandos del Teclado	
+	keyboard.enter().onPressDo{inputManager.pressEnter()}	
+	keyboard.left().onPressDo{inputManager.pressLeft()}
+	keyboard.right().onPressDo{inputManager.pressRight()}	
+	keyboard.space().onPressDo{field.player().shoot()}
+	
+	// Para debugear hicimos un palito magico.
+	keyboard.d().onPressDo{debugStick.debug()}
+	keyboard.e().onPressDo{debugStick.nextDebug()}	
+	
+	// Game Starto !
+	game.start()
+}
+ 

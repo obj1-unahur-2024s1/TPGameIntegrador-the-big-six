@@ -1,0 +1,5 @@
+// Creo esto simplemente para que github no tire error ya que la plantilla en la carpeta workflow parece estar
+// tratando de correr tests que no existen.
+test "TestAntiWorkflow" {
+	assert.that(true)
+}

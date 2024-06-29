@@ -1,5 +1,59 @@
-// Creo esto simplemente para que github no tire error ya que la plantilla en la carpeta workflow parece estar
-// tratando de correr tests que no existen.
-test "TestAntiWorkflow" {
-	assert.that(true)
+import characters.*
+import wollok.game.*
+describe "test Player"{
+	const p1= new Player()
+	
+	test "Valores iniciales"{
+		assert.equals(game.origin(),p1.position())
+	}
+	
+	test "Movimeinto a la derecha"{
+		p1.moveRight()
+		assert.equals(game.at(1,0),p1.position())
+	}
+	
+	test "No me muevo a la izquierda si esoy en el borde"{
+		p1.moveLeft()
+		assert.equals(game.origin(),p1.position())
+	}
+	
+	test "puntaje"{
+		assert.equals(-1, p1.puntaje())
+		score.show()
+		p1.sumarPuntaje(2)
+		assert.equals(1, p1.puntaje())
+	}
 }
+
+describe "Test Field"{
+	test "Columnas"{
+		assert.that(field.colums().isEmpty())
+		field.initilize()
+		assert.notThat(field.colums().isEmpty())
+	}
+}
+
+describe "Test Columnas"{
+	const c = new Colum(position = game.at(0,11))//Elijo una posicion arbitraria para el test
+	
+	test "Valores iniciales"{
+		assert.equals(3, c.stack().size())
+	}
+}
+
+describe "Test Brick"{
+	const b = new Brick(position=game.at(1,1))//Elijo arbitrariamente que inicie en esa posicion (1,1)
+	
+	test "Mover arriba"{
+		b.moveUp()
+		assert.equals(game.at(1,2), b.position())
+	}
+}
+
+describe "Test indicador"{
+	test "Posición en X igual que el personaje"{
+		field.initilize()
+		assert.equals(indicador.position().x(), field.player().position().x())
+	}
+}
+
